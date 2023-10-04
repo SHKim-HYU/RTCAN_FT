@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG   -std=c++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/xeno/Indy_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/home/xeno/Indy_ws/RTCAN_FT/include/CAN 
+CXX_INCLUDES = -I/home/xeno/Indy_ws/RTCAN_FT/bin/inc -I/home/xeno/Indy_ws/RTCAN_FT/include/CAN 
 

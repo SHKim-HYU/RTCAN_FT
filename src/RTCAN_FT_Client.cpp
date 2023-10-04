@@ -2,6 +2,7 @@
 #define RTCAN_FT_CLIENT_H_
 
 #include <stdio.h>
+#include "iostream"
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>
@@ -9,53 +10,86 @@
 #include <rtdk.h>
 #include <native/task.h>
 #include <native/timer.h>
-#include <libpcanfd.h>
 
-#define PCAN_DEVICE PCAN_PCIBUS2
+#include <PCANDevice.h>
+
+// PCI/E-FD
+#define DEVICE "/dev/rtdm/pcan1"
 
 RT_TASK can_task;
+
+PCANDevice can;
 
 unsigned int cycle_ns = 1000000; // 1 ms
 
 void can_comm_task(void *arg)
 {
-    pcan_handle_t *h;
-    struct pcanfd_msg msg;
-    int status;
+    CANDevice::Config_t config;
+    config.mode_fd = 0; // 0: CAN2.0 Mode, 1: CAN-FD Mode
+    config.bitrate = 1e6; //1mbps
+    config.d_bitrate = 2e6; //2mbps
+    config.sample_point = .875; //87.5% 
+    config.d_sample_point = 0.6; //60%
+    config.clock_freq = 80e6; // 80mhz // Read from driver?  
+    
 
-    h = pcanfd_open(PCAN_DEVICE, 0);  // Remove O_RDWR
-    if (!h) {
-        perror("Failed to open PCAN device");
+    if(!can.Open(DEVICE, config, false))
+    {
+        std::cout << "Unable to open CAN Device" << std::endl;
+        // exit(-2);
         return;
     }
+
+    // Setup Filters
+    can.ClearFilters(); // Clear Existing/Reset.  Filters are saved on the device hardware.  Must make sure to clear
+    // can.AddFilter(1, 1); // Only Listen to messages on id 0x01.  
+
+    CANDevice::CAN_msg_t txmsg;
+    CANDevice::CAN_msg_t rxmsg;
+    
+    txmsg.id = 0x64;
+    txmsg.length = 8;
+    txmsg.data[0] = 0x0A;
+    txmsg.data[1] = 0x00;
+    txmsg.data[2] = 0x00;
+    txmsg.data[3] = 0x00;
+    txmsg.data[4] = 0x00;
+    txmsg.data[5] = 0x00;
+    txmsg.data[6] = 0x00;
+    txmsg.data[7] = 0x00;
+
+    // rxmsg.id = 0x01;
+    rxmsg.length = 8;
+
+    can.Status();
+
+    can.AddFilter(1,2);
+
+    can.Send(txmsg);
+
+    std::cout << "id: " << txmsg.id << std::endl;
+    std::cout << "length: " << txmsg.length << std::endl;
+    std::cout << "data: " << txmsg.data[0]<<txmsg.data[1]<<txmsg.data[2]<<std::endl;
 
     rt_task_set_periodic(NULL, TM_NOW, cycle_ns);
     while (1) {
         rt_task_wait_period(NULL); //wait for next cycle
-
-        // Send CAN frame
-        memset(&msg, 0, sizeof(msg));
-        msg.type = PCANFD_TYPE_CAN20_MSG;
-        msg.id = 0x064;
-        msg.len = 8;  // Change from dlc to len
-        msg.data[0] = 0x0B;
-        // ... set other DATA bytes as needed
-        status = pcanfd_send_msg(h, &msg);
-        if (status < 0) {
-            perror("Failed to send CAN frame");
-        }
-
-        // Read CAN frame
-        status = pcanfd_recv_msg(h, &msg, NULL);
-        if (status < 0) {
-            perror("Failed to read CAN frame");
-        } else {
-            printf("Received: ID=0x%X, LEN=%d, data[0]=0x%X\n",  // Change DLC to LEN
-                   msg.id, msg.len, msg.data[0]);
-        }    
+        can.Status();
+        bool res_can = can.Send(txmsg);
+        std::cout << "res_send: " << res_can << std::endl;
+        
+        res_can = can.Receive(rxmsg);
+        std::cout << "res_recv: " << res_can << std::endl;
+        std::cout << "id: " << rxmsg.id << std::endl;
+        std::cout << "length: "<< rxmsg.length << std::endl;
+        std::cout << "data: " << rxmsg.data[0]<<rxmsg.data[1]<<rxmsg.data[2]<<std::endl;
+        res_can = can.Receive(rxmsg);
+        std::cout << "res_recv: " << res_can << std::endl;
+        std::cout << "id: " << rxmsg.id << std::endl;
+        std::cout << "length: "<< rxmsg.length << std::endl;
+        std::cout << "data: " << rxmsg.data[0]<<rxmsg.data[1]<<rxmsg.data[2]<<std::endl;
     }
-
-    pcanfd_close(h);
+    can.Close();
 }
 
 

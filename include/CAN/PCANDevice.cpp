@@ -47,28 +47,39 @@ bool PCANDevice::Open(const std::string &device_id, Config_t &config, bool bUseR
     // Copy Config
     config_ = config;
 
-    // TODO: Validate things?
+    
+
+    if(!CalculateTimings())
+        return false;
+
     if (config_.mode_fd == 0)
+    {
+        mode = config_.mode_fd;
+        fd_ = pcanfd_open(device_id.c_str(), OFD_BITRATE, config.bitrate);
+    }
+    else if (config_.mode_fd == 1)
+    {
+        mode = config_.mode_fd;
+        //printf("Timings: %d %d %d %d %d\n", config_.tq,config_.brp,config_.tseg1,config_.tseg2,config_.sjw);
+        //printf("Data Timings: %d %d %d %d %d\n", config_.tq,config_.d_brp,config_.d_tseg1,config_.d_tseg2,config_.d_sjw);
+        //fd_ = pcanfd_open(device_id.c_str(), OFD_BITRATE | OFD_SAMPLEPT | OFD_DBITRATE | OFD_SAMPLEPT | OFD_CLOCKHZ /*| OFD_NONBLOCKING */| PCANFD_INIT_FD, config.bitrate, (int)config.sample_point * 10000, config.d_bitrate, (int)config.d_sample_point * 10000, config.clock_freq);
+        fd_ = pcanfd_open(device_id.c_str(), OFD_BITRATE | OFD_BRPTSEGSJW | OFD_DBITRATE | OFD_BRPTSEGSJW | OFD_CLOCKHZ | /*OFD_NONBLOCKING |*/ PCANFD_INIT_FD | PCANFD_INIT_BUS_LOAD_INFO, config_.brp,
+                          config_.tseg1,
+                          config_.tseg2,
+                          config_.sjw,
+                          config_.d_brp,
+                          config_.d_tseg1,
+                          config_.d_tseg2,
+                          config_.d_sjw,
+                          config.clock_freq);
+    }
+    // TODO: Validate things?
+    else
     {
         perror("[ERROR]: PCANDevice::Open(): Only CAN FD Ddevices Supported Currently.");
         return false;
     }
 
-    if(!CalculateTimings())
-        return false;
-
-    //printf("Timings: %d %d %d %d %d\n", config_.tq,config_.brp,config_.tseg1,config_.tseg2,config_.sjw);
-    //printf("Data Timings: %d %d %d %d %d\n", config_.tq,config_.d_brp,config_.d_tseg1,config_.d_tseg2,config_.d_sjw);
-    //fd_ = pcanfd_open(device_id.c_str(), OFD_BITRATE | OFD_SAMPLEPT | OFD_DBITRATE | OFD_SAMPLEPT | OFD_CLOCKHZ /*| OFD_NONBLOCKING */| PCANFD_INIT_FD, config.bitrate, (int)config.sample_point * 10000, config.d_bitrate, (int)config.d_sample_point * 10000, config.clock_freq);
-    fd_ = pcanfd_open(device_id.c_str(), OFD_BITRATE | OFD_BRPTSEGSJW | OFD_DBITRATE | OFD_BRPTSEGSJW | OFD_CLOCKHZ | /*OFD_NONBLOCKING |*/ PCANFD_INIT_FD | PCANFD_INIT_BUS_LOAD_INFO, config_.brp,
-                      config_.tseg1,
-                      config_.tseg2,
-                      config_.sjw,
-                      config_.d_brp,
-                      config_.d_tseg1,
-                      config_.d_tseg2,
-                      config_.d_sjw,
-                      config.clock_freq);
     if (fd_ < 0)
     {
         perror("[ERROR]: PCANDevice::Open: Failed to Open PCANFD.");
@@ -110,66 +121,134 @@ void PCANDevice::Status()
 
 bool PCANDevice::Send(uint32_t dest_id, uint8_t *data, uint16_t length)
 {
-    if(length > 64)
+    if (mode==0)
     {
-        std::cout << "[ERROR]: PCANDevice::Send(): Invalid Message Length" << std::endl;
-        return false;
+        if(length > 8)
+        {
+            std::cout << "[ERROR]: PCANDevice::Send(): Invalid Message Length" << std::endl;
+            return false;
+        }
+
+        // TODO: Support non FD Messages?  For now ALWAYS FD + BRS, and ALWAYS standard length
+
+        // Setup PCANFD Send Format
+        struct pcanfd_msg pcan_msg;
+        memset(&pcan_msg, 0, sizeof(pcan_msg));
+        pcan_msg.type = PCANFD_TYPE_CAN20_MSG;
+        pcan_msg.id = dest_id;
+        pcan_msg.data_len = length;
+        // pcan_msg.flags = PCANFD_MSG_STD | PCANFD_MSG_BRS;
+
+        // Copy Message Data to PCANFD
+        memcpy(pcan_msg.data, data, length);
+
+        // Send Message
+        int tx_error = pcanfd_send_msg(fd_, &pcan_msg);
+        if (tx_error)
+        {
+           perror("[ERROR]: PCANDevice::Send(): Failed to Send CAN Message.");
+            return false;
+        }
+
+        return true;
     }
-
-    // TODO: Support non FD Messages?  For now ALWAYS FD + BRS, and ALWAYS standard length
-
-    // Setup PCANFD Send Format
-    struct pcanfd_msg pcan_msg;
-    memset(&pcan_msg, 0, sizeof(pcan_msg));
-    pcan_msg.type = PCANFD_TYPE_CANFD_MSG;
-    pcan_msg.id = dest_id;
-    pcan_msg.data_len = length;
-    pcan_msg.flags = PCANFD_MSG_STD | PCANFD_MSG_BRS;
-
-    // Copy Message Data to PCANFD
-    memcpy(pcan_msg.data, data, length);
-
-    // Send Message
-    int tx_error = pcanfd_send_msg(fd_, &pcan_msg);
-    if (tx_error)
+    else if(mode==1)
     {
-      //  perror("[ERROR]: PCANDevice::Send(): Failed to Send CAN Message.");
-        return false;
-    }
+        if(length > 64)
+        {
+            std::cout << "[ERROR]: PCANDevice::Send(): Invalid Message Length" << std::endl;
+            return false;
+        }
 
-    return true;
+        // TODO: Support non FD Messages?  For now ALWAYS FD + BRS, and ALWAYS standard length
+
+        // Setup PCANFD Send Format
+        struct pcanfd_msg pcan_msg;
+        memset(&pcan_msg, 0, sizeof(pcan_msg));
+        pcan_msg.type = PCANFD_TYPE_CANFD_MSG;
+        pcan_msg.id = dest_id;
+        pcan_msg.data_len = length;
+        pcan_msg.flags = PCANFD_MSG_STD | PCANFD_MSG_BRS;
+
+        // Copy Message Data to PCANFD
+        memcpy(pcan_msg.data, data, length);
+
+        // Send Message
+        int tx_error = pcanfd_send_msg(fd_, &pcan_msg);
+        if (tx_error)
+        {
+          //  perror("[ERROR]: PCANDevice::Send(): Failed to Send CAN Message.");
+            return false;
+        }
+
+        return true;
+    }
 }
 
 bool PCANDevice::Send(CAN_msg_t &msg)
 {
-    if(msg.length > 64)
+    if (mode == 0)
     {
-        std::cout << "[ERROR]: PCANDevice::Send(): Invalid Message Length" << std::endl;
-        return false;
+        if(msg.length > 8)
+        {
+            std::cout << "[ERROR]: PCANDevice::Send(): Invalid Message Length" << std::endl;
+            return false;
+        }
+
+        // TODO: Support non FD Messages?  For now ALWAYS FD + BRS, and ALWAYS standard length
+
+        // Setup PCANFD Send Format
+        struct pcanfd_msg pcan_msg;
+        memset(&pcan_msg, 0, sizeof(pcan_msg));
+        pcan_msg.type = PCANFD_TYPE_CAN20_MSG;
+        pcan_msg.id = msg.id;
+        pcan_msg.data_len = msg.length;
+        // pcan_msg.flags = PCANFD_MSG_STD | PCANFD_MSG_BRS;
+
+        // Copy Message Data to PCANFD
+        memcpy(pcan_msg.data, msg.data.data(), msg.length);
+
+        // Send Message
+        int tx_error = pcanfd_send_msg(fd_, &pcan_msg);
+        if (tx_error)
+        {
+            //perror("[ERROR]: PCANDevice::Send(): Failed to Send CAN Message.");
+            return false;
+        }
+
+        return true;
     }
-
-    // TODO: Support non FD Messages?  For now ALWAYS FD + BRS, and ALWAYS standard length
-
-    // Setup PCANFD Send Format
-    struct pcanfd_msg pcan_msg;
-    memset(&pcan_msg, 0, sizeof(pcan_msg));
-    pcan_msg.type = PCANFD_TYPE_CANFD_MSG;
-    pcan_msg.id = msg.id;
-    pcan_msg.data_len = msg.length;
-    pcan_msg.flags = PCANFD_MSG_STD | PCANFD_MSG_BRS;
-
-    // Copy Message Data to PCANFD
-    memcpy(pcan_msg.data, msg.data.data(), msg.length);
-
-    // Send Message
-    int tx_error = pcanfd_send_msg(fd_, &pcan_msg);
-    if (tx_error)
+    else if (mode == 1)
     {
-        //perror("[ERROR]: PCANDevice::Send(): Failed to Send CAN Message.");
-        return false;
-    }
+        if(msg.length > 64)
+        {
+            std::cout << "[ERROR]: PCANDevice::Send(): Invalid Message Length" << std::endl;
+            return false;
+        }
 
-    return true;
+        // TODO: Support non FD Messages?  For now ALWAYS FD + BRS, and ALWAYS standard length
+
+        // Setup PCANFD Send Format
+        struct pcanfd_msg pcan_msg;
+        memset(&pcan_msg, 0, sizeof(pcan_msg));
+        pcan_msg.type = PCANFD_TYPE_CANFD_MSG;
+        pcan_msg.id = msg.id;
+        pcan_msg.data_len = msg.length;
+        pcan_msg.flags = PCANFD_MSG_STD | PCANFD_MSG_BRS;
+
+        // Copy Message Data to PCANFD
+        memcpy(pcan_msg.data, msg.data.data(), msg.length);
+
+        // Send Message
+        int tx_error = pcanfd_send_msg(fd_, &pcan_msg);
+        if (tx_error)
+        {
+            //perror("[ERROR]: PCANDevice::Send(): Failed to Send CAN Message.");
+            return false;
+        }
+
+        return true;
+    }
 }
 
 bool PCANDevice::Receive(CAN_msg_t &msg)
@@ -190,11 +269,11 @@ bool PCANDevice::Receive(CAN_msg_t &msg)
     }
 
     // TODO: Handle Status/Error Messages somehow?  For now skip
-    // TODO: Support other messages. CAN FD ONLY!
-    if(pcan_msg.type != PCANFD_TYPE_CANFD_MSG)
-    {
-        return false;
-    }
+    // // TODO: Support other messages. CAN FD ONLY!
+    // if(pcan_msg.type != PCANFD_TYPE_CANFD_MSG)
+    // {
+    //     return false;
+    // }
 
     msg.id = pcan_msg.id;
     msg.length = pcan_msg.data_len;

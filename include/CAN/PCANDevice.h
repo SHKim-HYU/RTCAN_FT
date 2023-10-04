@@ -67,7 +67,7 @@ public:
     virtual void Status();
 
 protected:
-
+    int mode = -1;
     int fd_; // PCAN File Descriptor
 
 };

@@ -11,8 +11,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../bin/inc"
-  "/usr/src/linux-headers-5.4.239-xenomai-3.2.3+"
   "../include/CAN"
+  "/usr/src/linux-headers-5.4.239-xenomai-3.2.3+"
   "/usr/xenomai/include/trank"
   "/usr/xenomai/include/cobalt"
   "/usr/xenomai/include"

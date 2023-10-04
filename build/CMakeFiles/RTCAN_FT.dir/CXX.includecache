@@ -6,9 +6,31 @@
 
 #IncludeRegexTransform: 
 
+../include/CAN/CANDevice.h
+stdint.h
+-
+string
+-
+thread
+-
+vector
+-
+functional
+-
+
+../include/CAN/PCANDevice.h
+stdint.h
+-
+string
+-
+CANDevice.h
+-
+
 /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
 stdio.h
 -
+iostream
+/home/xeno/Indy_ws/RTCAN_FT/src/iostream
 stdlib.h
 -
 signal.h
@@ -23,7 +45,7 @@ native/task.h
 -
 native/timer.h
 -
-libpcanfd.h
+PCANDevice.h
 -
 
 /usr/xenomai/include/alchemy/compat.h
