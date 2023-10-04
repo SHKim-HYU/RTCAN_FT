@@ -1,4 +1,3 @@
-  
 /*
  * PCANDevice.cpp
  *

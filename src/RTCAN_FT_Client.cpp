@@ -42,7 +42,7 @@ void can_comm_task(void *arg)
 
     // Setup Filters
     can.ClearFilters(); // Clear Existing/Reset.  Filters are saved on the device hardware.  Must make sure to clear
-    // can.AddFilter(1, 1); // Only Listen to messages on id 0x01.  
+    can.AddFilter(1, 2); // Only Listen to messages on id 0x01, 0x02.  
 
     CANDevice::CAN_msg_t txmsg;
     CANDevice::CAN_msg_t rxmsg;
@@ -63,31 +63,21 @@ void can_comm_task(void *arg)
 
     can.Status();
 
-    can.AddFilter(1,2);
-
-    can.Send(txmsg);
-
-    std::cout << "id: " << txmsg.id << std::endl;
-    std::cout << "length: " << txmsg.length << std::endl;
-    std::cout << "data: " << txmsg.data[0]<<txmsg.data[1]<<txmsg.data[2]<<std::endl;
+    // can.Send(txmsg);
 
     rt_task_set_periodic(NULL, TM_NOW, cycle_ns);
     while (1) {
         rt_task_wait_period(NULL); //wait for next cycle
-        can.Status();
-        bool res_can = can.Send(txmsg);
-        std::cout << "res_send: " << res_can << std::endl;
+        can.Send(txmsg);
         
-        res_can = can.Receive(rxmsg);
-        std::cout << "res_recv: " << res_can << std::endl;
-        std::cout << "id: " << rxmsg.id << std::endl;
-        std::cout << "length: "<< rxmsg.length << std::endl;
-        std::cout << "data: " << rxmsg.data[0]<<rxmsg.data[1]<<rxmsg.data[2]<<std::endl;
-        res_can = can.Receive(rxmsg);
-        std::cout << "res_recv: " << res_can << std::endl;
-        std::cout << "id: " << rxmsg.id << std::endl;
-        std::cout << "length: "<< rxmsg.length << std::endl;
-        std::cout << "data: " << rxmsg.data[0]<<rxmsg.data[1]<<rxmsg.data[2]<<std::endl;
+        can.Receive(rxmsg);
+        rt_printf("id: %d, ",rxmsg.id);
+        rt_printf("data: %X %X %X %X %X %X %X %X\n",rxmsg.data[0],rxmsg.data[1],rxmsg.data[2],rxmsg.data[3],rxmsg.data[4],rxmsg.data[5],rxmsg.data[6],rxmsg.data[7]);
+
+        can.Receive(rxmsg);
+        rt_printf("id: %d, ",rxmsg.id);
+        rt_printf("data: %X %X %X %X %X %X %X %X\n",rxmsg.data[0],rxmsg.data[1],rxmsg.data[2],rxmsg.data[3],rxmsg.data[4],rxmsg.data[5],rxmsg.data[6],rxmsg.data[7]);
+        rt_printf("\n\n");
     }
     can.Close();
 }

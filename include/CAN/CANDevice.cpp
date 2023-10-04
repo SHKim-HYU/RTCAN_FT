@@ -1,4 +1,3 @@
-  
 /*
  * CANDevice.cpp
  *

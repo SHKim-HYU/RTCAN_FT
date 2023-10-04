@@ -26,6 +26,24 @@ string
 CANDevice.h
 -
 
+/home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+iostream
+-
+cmath
+-
+libpcanfd.h
+-
+CANDevice.h
+-
+
 /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp
 stdio.h
 -
