@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG   -D__XENO_COMPAT__ -D_
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/xeno/Indy_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.124-xenomai-3.1.1+ -I/usr/xenomai/include/trank -I/usr/xenomai/include/cobalt -I/usr/xenomai/include -I/usr/xenomai/include/alchemy 
+CXX_INCLUDES = -I/home/xeno/Indy_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/home/xeno/Indy_ws/RTCAN_FT/include/CAN -I/usr/xenomai/include/trank -I/usr/xenomai/include/cobalt -I/usr/xenomai/include -I/usr/xenomai/include/alchemy 
 

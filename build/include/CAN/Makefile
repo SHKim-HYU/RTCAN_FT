@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles /home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN/CMakeFiles/progress.marks
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f CMakeFiles/Makefile2 include/CAN/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f CMakeFiles/Makefile2 include/CAN/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,71 +143,87 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f CMakeFiles/Makefile2 include/CAN/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f CMakeFiles/Makefile2 include/CAN/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named RTCAN_FT
+# Convenience name for target.
+include/CAN/CMakeFiles/CAN.dir/rule:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f CMakeFiles/Makefile2 include/CAN/CMakeFiles/CAN.dir/rule
+.PHONY : include/CAN/CMakeFiles/CAN.dir/rule
 
-# Build rule for target.
-RTCAN_FT: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 RTCAN_FT
-.PHONY : RTCAN_FT
+# Convenience name for target.
+CAN: include/CAN/CMakeFiles/CAN.dir/rule
 
-# fast build rule for target.
-RTCAN_FT/fast:
-	$(MAKE) -f CMakeFiles/RTCAN_FT.dir/build.make CMakeFiles/RTCAN_FT.dir/build
-.PHONY : RTCAN_FT/fast
-
-#=============================================================================
-# Target rules for targets named CAN
-
-# Build rule for target.
-CAN: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 CAN
 .PHONY : CAN
 
 # fast build rule for target.
 CAN/fast:
-	$(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/build
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/build
 .PHONY : CAN/fast
 
-src/RTCAN_FT_Client.o: src/RTCAN_FT_Client.cpp.o
+CANDevice.o: CANDevice.cpp.o
 
-.PHONY : src/RTCAN_FT_Client.o
+.PHONY : CANDevice.o
 
 # target to build an object file
-src/RTCAN_FT_Client.cpp.o:
-	$(MAKE) -f CMakeFiles/RTCAN_FT.dir/build.make CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o
-.PHONY : src/RTCAN_FT_Client.cpp.o
+CANDevice.cpp.o:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.o
+.PHONY : CANDevice.cpp.o
 
-src/RTCAN_FT_Client.i: src/RTCAN_FT_Client.cpp.i
+CANDevice.i: CANDevice.cpp.i
 
-.PHONY : src/RTCAN_FT_Client.i
+.PHONY : CANDevice.i
 
 # target to preprocess a source file
-src/RTCAN_FT_Client.cpp.i:
-	$(MAKE) -f CMakeFiles/RTCAN_FT.dir/build.make CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.i
-.PHONY : src/RTCAN_FT_Client.cpp.i
+CANDevice.cpp.i:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.i
+.PHONY : CANDevice.cpp.i
 
-src/RTCAN_FT_Client.s: src/RTCAN_FT_Client.cpp.s
+CANDevice.s: CANDevice.cpp.s
 
-.PHONY : src/RTCAN_FT_Client.s
+.PHONY : CANDevice.s
 
 # target to generate assembly for a file
-src/RTCAN_FT_Client.cpp.s:
-	$(MAKE) -f CMakeFiles/RTCAN_FT.dir/build.make CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.s
-.PHONY : src/RTCAN_FT_Client.cpp.s
+CANDevice.cpp.s:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.s
+.PHONY : CANDevice.cpp.s
+
+PCANDevice.o: PCANDevice.cpp.o
+
+.PHONY : PCANDevice.o
+
+# target to build an object file
+PCANDevice.cpp.o:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o
+.PHONY : PCANDevice.cpp.o
+
+PCANDevice.i: PCANDevice.cpp.i
+
+.PHONY : PCANDevice.i
+
+# target to preprocess a source file
+PCANDevice.cpp.i:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.i
+.PHONY : PCANDevice.cpp.i
+
+PCANDevice.s: PCANDevice.cpp.s
+
+.PHONY : PCANDevice.s
+
+# target to generate assembly for a file
+PCANDevice.cpp.s:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.s
+.PHONY : PCANDevice.cpp.s
 
 # Help Target
 help:
@@ -221,11 +237,13 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... RTCAN_FT"
 	@echo "... CAN"
-	@echo "... src/RTCAN_FT_Client.o"
-	@echo "... src/RTCAN_FT_Client.i"
-	@echo "... src/RTCAN_FT_Client.s"
+	@echo "... CANDevice.o"
+	@echo "... CANDevice.i"
+	@echo "... CANDevice.s"
+	@echo "... PCANDevice.o"
+	@echo "... PCANDevice.i"
+	@echo "... PCANDevice.s"
 .PHONY : help
 
 
@@ -237,6 +255,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -4,7 +4,6 @@
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o
  /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
  /usr/xenomai/include/alchemy/compat.h
- /usr/xenomai/include/alchemy/mutex.h
  /usr/xenomai/include/alchemy/task.h
  /usr/xenomai/include/alchemy/timer.h
  /usr/xenomai/include/boilerplate/atomic.h
@@ -24,22 +23,28 @@ CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o
  /usr/xenomai/include/cobalt/boilerplate/limits.h
  /usr/xenomai/include/cobalt/boilerplate/sched.h
  /usr/xenomai/include/cobalt/boilerplate/wrappers.h
- /usr/xenomai/include/cobalt/fcntl.h
  /usr/xenomai/include/cobalt/pthread.h
  /usr/xenomai/include/cobalt/sched.h
  /usr/xenomai/include/cobalt/semaphore.h
  /usr/xenomai/include/cobalt/signal.h
  /usr/xenomai/include/cobalt/stdio.h
  /usr/xenomai/include/cobalt/stdlib.h
- /usr/xenomai/include/cobalt/sys/ioctl.h
+ /usr/xenomai/include/cobalt/sys/cobalt.h
  /usr/xenomai/include/cobalt/sys/mman.h
- /usr/xenomai/include/cobalt/sys/socket.h
  /usr/xenomai/include/cobalt/sys/time.h
  /usr/xenomai/include/cobalt/ticks.h
  /usr/xenomai/include/cobalt/time.h
+ /usr/xenomai/include/cobalt/uapi/cond.h
+ /usr/xenomai/include/cobalt/uapi/corectl.h
+ /usr/xenomai/include/cobalt/uapi/event.h
  /usr/xenomai/include/cobalt/uapi/kernel/limits.h
+ /usr/xenomai/include/cobalt/uapi/kernel/synch.h
  /usr/xenomai/include/cobalt/uapi/kernel/thread.h
  /usr/xenomai/include/cobalt/uapi/kernel/types.h
+ /usr/xenomai/include/cobalt/uapi/kernel/urw.h
+ /usr/xenomai/include/cobalt/uapi/kernel/vdso.h
+ /usr/xenomai/include/cobalt/uapi/monitor.h
+ /usr/xenomai/include/cobalt/uapi/mutex.h
  /usr/xenomai/include/cobalt/uapi/sched.h
  /usr/xenomai/include/cobalt/uapi/sem.h
  /usr/xenomai/include/cobalt/uapi/signal.h
@@ -52,7 +57,6 @@ CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o
  /usr/xenomai/include/copperplate/heapobj.h
  /usr/xenomai/include/copperplate/reference.h
  /usr/xenomai/include/copperplate/threadobj.h
- /usr/xenomai/include/trank/native/mutex.h
  /usr/xenomai/include/trank/native/task.h
  /usr/xenomai/include/trank/native/timer.h
  /usr/xenomai/include/trank/native/types.h

@@ -3,7 +3,6 @@
 
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: ../src/RTCAN_FT_Client.cpp
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/alchemy/compat.h
-CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/alchemy/mutex.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/alchemy/task.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/alchemy/timer.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/boilerplate/atomic.h
@@ -23,22 +22,28 @@ CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/boilerpl
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/boilerplate/limits.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/boilerplate/sched.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/boilerplate/wrappers.h
-CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/fcntl.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/pthread.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/sched.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/semaphore.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/signal.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/stdio.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/stdlib.h
-CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/sys/ioctl.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/sys/cobalt.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/sys/mman.h
-CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/sys/socket.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/sys/time.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/ticks.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/time.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/cond.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/corectl.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/event.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/kernel/limits.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/kernel/synch.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/kernel/thread.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/kernel/types.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/kernel/urw.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/kernel/vdso.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/monitor.h
+CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/mutex.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/sched.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/sem.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/cobalt/uapi/signal.h
@@ -51,7 +56,6 @@ CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/copperpl
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/copperplate/heapobj.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/copperplate/reference.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/copperplate/threadobj.h
-CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/trank/native/mutex.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/trank/native/task.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/trank/native/timer.h
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: /usr/xenomai/include/trank/native/types.h

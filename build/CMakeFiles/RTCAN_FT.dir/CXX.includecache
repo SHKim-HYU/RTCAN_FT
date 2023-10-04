@@ -7,19 +7,9 @@
 #IncludeRegexTransform: 
 
 /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
-sys/socket.h
--
-linux/can.h
--
-linux/can/raw.h
--
-net/if.h
--
 stdio.h
 -
 stdlib.h
--
-stdint.h
 -
 signal.h
 -
@@ -27,47 +17,17 @@ unistd.h
 -
 sys/mman.h
 -
-string.h
--
-fcntl.h
--
-errno.h
--
-termios.h
--
-time.h
--
-sys/ioctl.h
--
-math.h
--
-string
--
-iostream
-/home/xeno/Indy_ws/RTCAN_FT/src/iostream
-fstream
--
-sstream
+rtdk.h
 -
 native/task.h
 -
 native/timer.h
 -
-native/mutex.h
--
-rtdk.h
+libpcanfd.h
 -
 
 /usr/xenomai/include/alchemy/compat.h
 trank/trank.h
--
-
-/usr/xenomai/include/alchemy/mutex.h
-stdint.h
--
-alchemy/timer.h
--
-alchemy/task.h
 -
 
 /usr/xenomai/include/alchemy/task.h
@@ -208,10 +168,6 @@ cobalt/sched.h
 cobalt/wrappers.h
 -
 
-/usr/xenomai/include/cobalt/fcntl.h
-cobalt/wrappers.h
--
-
 /usr/xenomai/include/cobalt/pthread.h
 boilerplate/libc.h
 -
@@ -256,8 +212,46 @@ cobalt/wrappers.h
 cobalt/wrappers.h
 -
 
-/usr/xenomai/include/cobalt/sys/ioctl.h
-cobalt/wrappers.h
+/usr/xenomai/include/cobalt/sys/cobalt.h
+sys/types.h
+-
+signal.h
+-
+pthread.h
+-
+sched.h
+-
+semaphore.h
+-
+errno.h
+-
+stdio.h
+-
+time.h
+-
+boilerplate/atomic.h
+-
+boilerplate/list.h
+-
+cobalt/uapi/kernel/synch.h
+-
+cobalt/uapi/kernel/vdso.h
+-
+cobalt/uapi/corectl.h
+-
+cobalt/uapi/mutex.h
+-
+cobalt/uapi/event.h
+-
+cobalt/uapi/monitor.h
+-
+cobalt/uapi/thread.h
+-
+cobalt/uapi/cond.h
+-
+cobalt/uapi/sem.h
+-
+cobalt/ticks.h
 -
 
 /usr/xenomai/include/cobalt/sys/mman.h
@@ -266,15 +260,13 @@ sys/types.h
 cobalt/wrappers.h
 -
 
-/usr/xenomai/include/cobalt/sys/socket.h
-cobalt/wrappers.h
--
-
 /usr/xenomai/include/cobalt/sys/time.h
 cobalt/wrappers.h
 -
 
 /usr/xenomai/include/cobalt/ticks.h
+stdbool.h
+-
 cobalt/uapi/kernel/types.h
 -
 
@@ -284,7 +276,21 @@ cobalt/wrappers.h
 cobalt/uapi/time.h
 -
 
+/usr/xenomai/include/cobalt/uapi/cond.h
+cobalt/uapi/mutex.h
+-
+
+/usr/xenomai/include/cobalt/uapi/corectl.h
+
+/usr/xenomai/include/cobalt/uapi/event.h
+cobalt/uapi/kernel/types.h
+-
+
 /usr/xenomai/include/cobalt/uapi/kernel/limits.h
+
+/usr/xenomai/include/cobalt/uapi/kernel/synch.h
+cobalt/uapi/kernel/types.h
+-
 
 /usr/xenomai/include/cobalt/uapi/kernel/thread.h
 cobalt/uapi/kernel/types.h
@@ -296,7 +302,25 @@ linux/types.h
 cobalt/uapi/kernel/limits.h
 -
 
+/usr/xenomai/include/cobalt/uapi/kernel/urw.h
+linux/types.h
+-
+
+/usr/xenomai/include/cobalt/uapi/kernel/vdso.h
+cobalt/uapi/kernel/urw.h
+-
+
+/usr/xenomai/include/cobalt/uapi/monitor.h
+cobalt/uapi/kernel/types.h
+-
+
+/usr/xenomai/include/cobalt/uapi/mutex.h
+cobalt/uapi/kernel/types.h
+-
+
 /usr/xenomai/include/cobalt/uapi/sched.h
+cobalt/uapi/kernel/types.h
+-
 
 /usr/xenomai/include/cobalt/uapi/sem.h
 cobalt/uapi/kernel/types.h
@@ -332,6 +356,8 @@ boilerplate/lock.h
 boilerplate/limits.h
 -
 cobalt/ticks.h
+-
+cobalt/sys/cobalt.h
 -
 
 /usr/xenomai/include/copperplate/debug.h
@@ -402,10 +428,6 @@ copperplate/heapobj.h
 cobalt/uapi/kernel/types.h
 -
 sys/time.h
--
-
-/usr/xenomai/include/trank/native/mutex.h
-alchemy/mutex.h
 -
 
 /usr/xenomai/include/trank/native/task.h

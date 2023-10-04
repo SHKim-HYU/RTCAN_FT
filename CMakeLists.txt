@@ -113,20 +113,32 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELEASE} ${CMAKE_CXX_FLAGS
 set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_DEBUG} -pg")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined")
 
+set(CAN_HEADERS_DIR ${PROJECT_SOURCE_DIR}/include/CAN)
 
 include_directories(${PROJ_INSTALL_INCLUDE_DIR})
 include_directories(
         ${KERNELHEADERS_DIR}
+        ${CAN_HEADERS_DIR}
 )
 
+add_subdirectory(include/CAN)
 
 add_executable(${PROJECT_NAME}
         src/RTCAN_FT_Client.cpp
 )
 
+
+# libpcan
+find_path(PCAN_INCLUDE_DIR NAMES libpcanfd.h)
+find_library(PCAN_LIBRARY NAMES pcanfd)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PCAN_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME}
+       sub::CAN
        dl
+       ${PCAN_LIBRARY}
 )
+message(STATUS "pcan library: ${PCAN_LIBRARY}")
+message(STATUS "pcan include: ${PCAN_INCLUDE_DIR}")
 # xenomai
 find_package(Xenomai 3.1.1 REQUIRED NATIVE)
 message(STATUS "Xenomai found with theses skins: ${Xenomai_SKINS}")
