@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp" "/home/xeno/Indy_ws/RTCAN_FT/build/include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.o"
+  "/home/xeno/Indy_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp" "/home/xeno/Indy_ws/RTCAN_FT/build/include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.o"
   "/home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp" "/home/xeno/Indy_ws/RTCAN_FT/build/include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
