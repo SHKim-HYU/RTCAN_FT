@@ -1,9 +1,10 @@
 {
     "cmake.configureSettings": {
-        "WITH_CASADI": "ON",
-        "WITH_BULLET": "OFF",
-        "WITH_POCO": "ON",
-        "WITH_CB": "OFF",
-        "WITH_RP": "OFF"
+        // Add CMAKE options
+        // "WITH_CASADI": "OFF",
+        // "WITH_BULLET": "OFF",
+        // "WITH_POCO": "OFF",
+        // "WITH_CB": "OFF",
+        // "WITH_RP": "OFF"
     }
 }
