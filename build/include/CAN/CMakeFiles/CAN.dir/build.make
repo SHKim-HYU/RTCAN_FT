@@ -60,28 +60,28 @@ include include/CAN/CMakeFiles/CAN.dir/flags.make
 include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.o: include/CAN/CMakeFiles/CAN.dir/flags.make
 include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.o: ../include/CAN/CANDevice.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.o"
-	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CAN.dir/CANDevice.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CAN.dir/CANDevice.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp
 
 include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAN.dir/CANDevice.cpp.i"
-	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp > CMakeFiles/CAN.dir/CANDevice.cpp.i
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp > CMakeFiles/CAN.dir/CANDevice.cpp.i
 
 include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAN.dir/CANDevice.cpp.s"
-	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp -o CMakeFiles/CAN.dir/CANDevice.cpp.s
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp -o CMakeFiles/CAN.dir/CANDevice.cpp.s
 
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o: include/CAN/CMakeFiles/CAN.dir/flags.make
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o: ../include/CAN/PCANDevice.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o"
-	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CAN.dir/PCANDevice.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CAN.dir/PCANDevice.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp
 
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAN.dir/PCANDevice.cpp.i"
-	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp > CMakeFiles/CAN.dir/PCANDevice.cpp.i
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp > CMakeFiles/CAN.dir/PCANDevice.cpp.i
 
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAN.dir/PCANDevice.cpp.s"
-	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp -o CMakeFiles/CAN.dir/PCANDevice.cpp.s
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp -o CMakeFiles/CAN.dir/PCANDevice.cpp.s
 
 # Object files for target CAN
 CAN_OBJECTS = \

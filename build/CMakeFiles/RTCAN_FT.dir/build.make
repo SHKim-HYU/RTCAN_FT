@@ -60,15 +60,15 @@ include CMakeFiles/RTCAN_FT.dir/flags.make
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: CMakeFiles/RTCAN_FT.dir/flags.make
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o: ../src/RTCAN_FT_Client.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
 
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp > CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp > CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.i
 
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp -o CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp -o CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.s
 
 # Object files for target RTCAN_FT
 RTCAN_FT_OBJECTS = \
