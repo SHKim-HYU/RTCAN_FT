@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/CAN.dir/CANDevice.cpp.o"
+  "CMakeFiles/CAN.dir/ElmoCiA402.cpp.o"
   "CMakeFiles/CAN.dir/PCANDevice.cpp.o"
   "libCAN.a"
   "libCAN.pdb"

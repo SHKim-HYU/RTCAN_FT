@@ -198,6 +198,33 @@ CANDevice.cpp.s:
 	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.s
 .PHONY : CANDevice.cpp.s
 
+ElmoCiA402.o: ElmoCiA402.cpp.o
+
+.PHONY : ElmoCiA402.o
+
+# target to build an object file
+ElmoCiA402.cpp.o:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.o
+.PHONY : ElmoCiA402.cpp.o
+
+ElmoCiA402.i: ElmoCiA402.cpp.i
+
+.PHONY : ElmoCiA402.i
+
+# target to preprocess a source file
+ElmoCiA402.cpp.i:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.i
+.PHONY : ElmoCiA402.cpp.i
+
+ElmoCiA402.s: ElmoCiA402.cpp.s
+
+.PHONY : ElmoCiA402.s
+
+# target to generate assembly for a file
+ElmoCiA402.cpp.s:
+	cd /home/xeno/Indy_ws/RTCAN_FT/build && $(MAKE) -f include/CAN/CMakeFiles/CAN.dir/build.make include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.s
+.PHONY : ElmoCiA402.cpp.s
+
 PCANDevice.o: PCANDevice.cpp.o
 
 .PHONY : PCANDevice.o
@@ -241,6 +268,9 @@ help:
 	@echo "... CANDevice.o"
 	@echo "... CANDevice.i"
 	@echo "... CANDevice.s"
+	@echo "... ElmoCiA402.o"
+	@echo "... ElmoCiA402.i"
+	@echo "... ElmoCiA402.s"
 	@echo "... PCANDevice.o"
 	@echo "... PCANDevice.i"
 	@echo "... PCANDevice.s"

@@ -70,9 +70,22 @@ include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAN.dir/CANDevice.cpp.s"
 	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/include/CAN/CANDevice.cpp -o CMakeFiles/CAN.dir/CANDevice.cpp.s
 
+include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.o: include/CAN/CMakeFiles/CAN.dir/flags.make
+include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.o: ../include/CAN/ElmoCiA402.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.o"
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CAN.dir/ElmoCiA402.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp
+
+include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CAN.dir/ElmoCiA402.cpp.i"
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xeno/Indy_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp > CMakeFiles/CAN.dir/ElmoCiA402.cpp.i
+
+include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CAN.dir/ElmoCiA402.cpp.s"
+	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xeno/Indy_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp -o CMakeFiles/CAN.dir/ElmoCiA402.cpp.s
+
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o: include/CAN/CMakeFiles/CAN.dir/flags.make
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o: ../include/CAN/PCANDevice.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o"
 	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CAN.dir/PCANDevice.cpp.o -c /home/xeno/Indy_ws/RTCAN_FT/include/CAN/PCANDevice.cpp
 
 include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.i: cmake_force
@@ -86,16 +99,18 @@ include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.s: cmake_force
 # Object files for target CAN
 CAN_OBJECTS = \
 "CMakeFiles/CAN.dir/CANDevice.cpp.o" \
+"CMakeFiles/CAN.dir/ElmoCiA402.cpp.o" \
 "CMakeFiles/CAN.dir/PCANDevice.cpp.o"
 
 # External object files for target CAN
 CAN_EXTERNAL_OBJECTS =
 
 include/CAN/libCAN.a: include/CAN/CMakeFiles/CAN.dir/CANDevice.cpp.o
+include/CAN/libCAN.a: include/CAN/CMakeFiles/CAN.dir/ElmoCiA402.cpp.o
 include/CAN/libCAN.a: include/CAN/CMakeFiles/CAN.dir/PCANDevice.cpp.o
 include/CAN/libCAN.a: include/CAN/CMakeFiles/CAN.dir/build.make
 include/CAN/libCAN.a: include/CAN/CMakeFiles/CAN.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libCAN.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xeno/Indy_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libCAN.a"
 	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && $(CMAKE_COMMAND) -P CMakeFiles/CAN.dir/cmake_clean_target.cmake
 	cd /home/xeno/Indy_ws/RTCAN_FT/build/include/CAN && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CAN.dir/link.txt --verbose=$(VERBOSE)
 
