@@ -16,7 +16,6 @@
 // PCI/E-FD
 #define DEVICE "/dev/rtdm/pcan0"
 
-RT_TASK write_task;
 RT_TASK read_task;
 
 PCANDevice can;
@@ -30,48 +29,30 @@ unsigned short temp;
 unsigned DF=50, DT=2000;
 double ft_array[6];
 
-void write_thread(void *arg)
-{
-    CANDevice::CAN_msg_t txmsg;
-    CANDevice::CAN_msg_t rxmsg;
-    
-    txmsg.id = 0x64;
-    txmsg.length = 8;
-    txmsg.data[0] = 0x0A;
-    txmsg.data[1] = 0x00;
-    txmsg.data[2] = 0x00;
-    txmsg.data[3] = 0x00;
-    txmsg.data[4] = 0x00;
-    txmsg.data[5] = 0x00;
-    txmsg.data[6] = 0x00;
-    txmsg.data[7] = 0x00;
-
-    // rxmsg.id = 0x01;
-    rxmsg.length = 8;
-
-    can.Status();
-
-    // can.Send(txmsg);
-
-    rt_task_set_periodic(NULL, TM_NOW, cycle_ns);
-    while (1) {
-        rt_task_wait_period(NULL); //wait for next cycle
-        can.Send(txmsg);
-    }
-    can.Close();
-}
-
 void read_thread(void *arg)
 {
     int res1, res2;
+    CANDevice::CAN_msg_t TxFrame;
     CANDevice::CAN_msg_t RxFrame1;
     CANDevice::CAN_msg_t RxFrame2;
 
+    TxFrame.id = 0x64;
+    TxFrame.length = 8;
+    TxFrame.data[0] = 0x0A;
+    TxFrame.data[1] = 0x00;
+    TxFrame.data[2] = 0x00;
+    TxFrame.data[3] = 0x00;
+    TxFrame.data[4] = 0x00;
+    TxFrame.data[5] = 0x00;
+    TxFrame.data[6] = 0x00;
+    TxFrame.data[7] = 0x00;
 
     RxFrame1.length = 8;
     RxFrame2.length = 8;
 
     can.Status();
+
+    can.Send(TxFrame);
 
     rt_task_set_periodic(NULL, TM_NOW, cycle_ns);
     while (1) {
@@ -79,6 +60,8 @@ void read_thread(void *arg)
         
         res2 = can.Receive(RxFrame2);
         res1 = can.Receive(RxFrame1);
+
+        can.Send(TxFrame);
 
         if (res1 == 1 && res2 == 1)
         {
@@ -117,7 +100,6 @@ void read_thread(void *arg)
 
 void signal_handler(int signum)
 {
-    rt_task_delete(&write_task);
     rt_task_delete(&read_task);
     printf("Servo drives Stopped!\n");
     exit(1);
@@ -154,9 +136,6 @@ int main(int argc, char *argv[])
 
     /* Avoids memory swapping for this program */
     mlockall(MCL_CURRENT|MCL_FUTURE);
-
-    rt_task_create(&write_task, "write_task", 0, 99, 0);
-    rt_task_start(&write_task, &write_thread, NULL);
 
     rt_task_create(&read_task, "read_task", 0, 90, 0);
     rt_task_start(&read_task, &read_thread, NULL);
