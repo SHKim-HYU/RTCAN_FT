@@ -51,6 +51,12 @@
 			{
 				"command" : 3,
 				"file" : 0,
+				"line" : 146,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
 				"line" : 155,
 				"parent" : 0
 			}
@@ -62,7 +68,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG  "
+					"fragment" : " -std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls  "
 				},
 				{
 					"fragment" : "-D__XENO_COMPAT__ -D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__"
@@ -75,30 +81,30 @@
 			[
 				{
 					"backtrace" : 3,
-					"path" : "/home/xeno/Indy_ws/RTCAN_FT/bin/inc"
+					"path" : "/home/robot/robot_ws/RTCAN_FT/bin/inc"
 				},
 				{
 					"backtrace" : 4,
+					"path" : "/home/robot/robot_ws/RTCAN_FT/include/CAN"
+				},
+				{
+					"backtrace" : 5,
 					"path" : "/usr/src/linux-headers-5.4.239-xenomai-3.2.3+"
 				},
 				{
-					"backtrace" : 4,
-					"path" : "/home/xeno/Indy_ws/RTCAN_FT/include/CAN"
-				},
-				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/usr/xenomai/include/trank"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/usr/xenomai/include/cobalt"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/usr/xenomai/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
 					"path" : "/usr/xenomai/include/alchemy"
 				}
 			],
@@ -122,7 +128,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG",
+				"fragment" : "-std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls",
 				"role" : "flags"
 			},
 			{
@@ -131,7 +137,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "include/CAN/libCAN.a",
+				"fragment" : "include/CAN/libCANd.a",
 				"role" : "libraries"
 			},
 			{

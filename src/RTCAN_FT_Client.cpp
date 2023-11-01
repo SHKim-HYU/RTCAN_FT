@@ -14,36 +14,24 @@
 #include <PCANDevice.h>
 
 // PCI/E-FD
-#define DEVICE "/dev/rtdm/pcan1"
+#define DEVICE "/dev/rtdm/pcan0"
 
-RT_TASK can_task;
+RT_TASK write_task;
+RT_TASK read_task;
 
 PCANDevice can;
 
 unsigned int cycle_ns = 1000000; // 1 ms
 
-void can_comm_task(void *arg)
+unsigned char data_field[16];
+
+short raw_data[6] = { 0 };
+unsigned short temp;
+unsigned DF=50, DT=2000;
+double ft_array[6];
+
+void write_thread(void *arg)
 {
-    CANDevice::Config_t config;
-    config.mode_fd = 0; // 0: CAN2.0 Mode, 1: CAN-FD Mode
-    config.bitrate = 1e6; //1mbps
-    config.d_bitrate = 2e6; //2mbps
-    config.sample_point = .875; //87.5% 
-    config.d_sample_point = 0.6; //60%
-    config.clock_freq = 80e6; // 80mhz // Read from driver?  
-    
-
-    if(!can.Open(DEVICE, config, false))
-    {
-        std::cout << "Unable to open CAN Device" << std::endl;
-        // exit(-2);
-        return;
-    }
-
-    // Setup Filters
-    can.ClearFilters(); // Clear Existing/Reset.  Filters are saved on the device hardware.  Must make sure to clear
-    can.AddFilter(1, 2); // Only Listen to messages on id 0x01, 0x02.  
-
     CANDevice::CAN_msg_t txmsg;
     CANDevice::CAN_msg_t rxmsg;
     
@@ -69,29 +57,95 @@ void can_comm_task(void *arg)
     while (1) {
         rt_task_wait_period(NULL); //wait for next cycle
         can.Send(txmsg);
-        
-        can.Receive(rxmsg);
-        rt_printf("id: %d, ",rxmsg.id);
-        rt_printf("data: %X %X %X %X %X %X %X %X\n",rxmsg.data[0],rxmsg.data[1],rxmsg.data[2],rxmsg.data[3],rxmsg.data[4],rxmsg.data[5],rxmsg.data[6],rxmsg.data[7]);
-
-        can.Receive(rxmsg);
-        rt_printf("id: %d, ",rxmsg.id);
-        rt_printf("data: %X %X %X %X %X %X %X %X\n",rxmsg.data[0],rxmsg.data[1],rxmsg.data[2],rxmsg.data[3],rxmsg.data[4],rxmsg.data[5],rxmsg.data[6],rxmsg.data[7]);
-        rt_printf("\n\n");
     }
     can.Close();
 }
 
+void read_thread(void *arg)
+{
+    int res1, res2;
+    CANDevice::CAN_msg_t RxFrame1;
+    CANDevice::CAN_msg_t RxFrame2;
+
+
+    RxFrame1.length = 8;
+    RxFrame2.length = 8;
+
+    can.Status();
+
+    rt_task_set_periodic(NULL, TM_NOW, cycle_ns);
+    while (1) {
+        rt_task_wait_period(NULL); //wait for next cycle
+        
+        res2 = can.Receive(RxFrame2);
+        res1 = can.Receive(RxFrame1);
+
+        if (res1 == 1 && res2 == 1)
+        {
+            //CANbus data to Torque data
+            for(int i = 0; i<6; i++)
+            {
+                data_field[i] = (unsigned char) RxFrame1.data[i];
+                data_field[i+8] = (unsigned char) RxFrame2.data[i];
+            }
+            
+            for(int idx = 0; idx<6; idx++)
+            {
+                temp = data_field[2*idx+1]*256;
+                temp += data_field[2*idx+2];
+
+                raw_data[idx] = (signed short) temp;
+            }
+
+            // Set Force/Torque Original
+            for(int n = 0; n<3; n++)
+            {
+                ft_array[n] = ((float)raw_data[n]) / DF;
+                ft_array[n+3] = ((float)raw_data[n+3]) / DT;
+            }
+
+            rt_printf("\nX direction Force: %f   \n",   ft_array[0]);
+            rt_printf("Y direction Force: %f    \n",    ft_array[1]);
+            rt_printf("Z direction Force: %f    \n\n",  ft_array[2]);
+            rt_printf("X direction Torque: %f   \n",    ft_array[3]);
+            rt_printf("Y direction Torque: %f   \n",    ft_array[4]);
+            rt_printf("Z direction Torque: %f   \n\n",  ft_array[5]);
+        }
+    }
+    can.Close();
+}
 
 void signal_handler(int signum)
 {
-    rt_task_delete(&can_task);
+    rt_task_delete(&write_task);
+    rt_task_delete(&read_task);
     printf("Servo drives Stopped!\n");
     exit(1);
 }
 
 int main(int argc, char *argv[])
 {
+    // CAN Setup
+    CANDevice::Config_t config;
+    config.mode_fd = 0; // 0: CAN2.0 Mode, 1: CAN-FD Mode
+    config.bitrate = 1e6; //1mbps
+    config.d_bitrate = 2e6; //2mbps
+    config.sample_point = .875; //87.5% 
+    config.d_sample_point = 0.6; //60%
+    config.clock_freq = 80e6; // 80mhz // Read from driver?  
+    
+
+    if(!can.Open(DEVICE, config, false))
+    {
+        std::cout << "Unable to open CAN Device" << std::endl;
+        // exit(-2);
+        return 0;
+    }
+
+    // Setup Filters
+    can.ClearFilters(); // Clear Existing/Reset.  Filters are saved on the device hardware.  Must make sure to clear
+    can.AddFilter(1, 2); // Only Listen to messages on id 0x01, 0x02.  
+
     // Perform auto-init of rt_print buffers if the task doesn't do so
     rt_print_auto_init(1);
 
@@ -101,8 +155,11 @@ int main(int argc, char *argv[])
     /* Avoids memory swapping for this program */
     mlockall(MCL_CURRENT|MCL_FUTURE);
 
-    rt_task_create(&can_task, "canTask", 0, 99, 0);
-    rt_task_start(&can_task, &can_comm_task, NULL);
+    rt_task_create(&write_task, "write_task", 0, 99, 0);
+    rt_task_start(&write_task, &write_thread, NULL);
+
+    rt_task_create(&read_task, "read_task", 0, 90, 0);
+    rt_task_start(&read_task, &read_thread, NULL);
 
     // Must pause here
     pause();

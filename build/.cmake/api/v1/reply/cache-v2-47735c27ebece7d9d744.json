@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xeno/Indy_ws/RTCAN_FT/build/include/CAN"
+			"value" : "/home/robot/robot_ws/RTCAN_FT/build/include/CAN"
 		},
 		{
 			"name" : "CAN_LIB_DEPENDS",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xeno/Indy_ws/RTCAN_FT/include/CAN"
+			"value" : "/home/robot/robot_ws/RTCAN_FT/include/CAN"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Release"
+			"value" : "Debug"
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/xeno/Indy_ws/RTCAN_FT/build"
+			"value" : "/home/robot/robot_ws/RTCAN_FT/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -631,7 +631,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/xeno/Indy_ws/RTCAN_FT"
+			"value" : "/home/robot/robot_ws/RTCAN_FT"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1599,7 +1599,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xeno/Indy_ws/RTCAN_FT/build"
+			"value" : "/home/robot/robot_ws/RTCAN_FT/build"
 		},
 		{
 			"name" : "RTCAN_FT_SHARED_LIBS",
@@ -1623,7 +1623,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/xeno/Indy_ws/RTCAN_FT"
+			"value" : "/home/robot/robot_ws/RTCAN_FT"
 		},
 		{
 			"name" : "RTCAN_FT_VERBOSE",
@@ -1636,66 +1636,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "ON"
-		},
-		{
-			"name" : "WITH_BULLET",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "STRING",
-			"value" : "OFF"
-		},
-		{
-			"name" : "WITH_CASADI",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "STRING",
-			"value" : "ON"
-		},
-		{
-			"name" : "WITH_CB",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "STRING",
-			"value" : "OFF"
-		},
-		{
-			"name" : "WITH_POCO",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "STRING",
-			"value" : "ON"
-		},
-		{
-			"name" : "WITH_RP",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
-				}
-			],
-			"type" : "STRING",
-			"value" : "OFF"
 		},
 		{
 			"name" : "XENOMAI_ROOT_DIR",

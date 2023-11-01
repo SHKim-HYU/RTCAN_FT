@@ -4,7 +4,7 @@
 CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o
  ../include/CAN/CANDevice.h
  ../include/CAN/PCANDevice.h
- /home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
+ /home/robot/robot_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
  /usr/xenomai/include/alchemy/compat.h
  /usr/xenomai/include/alchemy/task.h
  /usr/xenomai/include/alchemy/timer.h

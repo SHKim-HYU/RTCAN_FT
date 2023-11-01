@@ -26,11 +26,11 @@ string
 CANDevice.h
 -
 
-/home/xeno/Indy_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
+/home/robot/robot_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp
 stdio.h
 -
 iostream
-/home/xeno/Indy_ws/RTCAN_FT/src/iostream
+/home/robot/robot_ws/RTCAN_FT/src/iostream
 stdlib.h
 -
 signal.h

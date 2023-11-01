@@ -36,7 +36,7 @@
 					]
 				}
 			],
-			"name" : "Release",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -72,14 +72,14 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "CAN::@b812fb93f64d8e23a576",
-					"jsonFile" : "target-CAN-Release-0f2bbfc44416463886b7.json",
+					"jsonFile" : "target-CAN-Debug-889c19745a68e55a047e.json",
 					"name" : "CAN",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "RTCAN_FT::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RTCAN_FT-Release-5be9b045c0b3f28efc71.json",
+					"jsonFile" : "target-RTCAN_FT-Debug-85befaeff80e88278cd7.json",
 					"name" : "RTCAN_FT",
 					"projectIndex" : 0
 				}
@@ -89,8 +89,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/xeno/Indy_ws/RTCAN_FT/build",
-		"source" : "/home/xeno/Indy_ws/RTCAN_FT"
+		"build" : "/home/robot/robot_ws/RTCAN_FT/build",
+		"source" : "/home/robot/robot_ws/RTCAN_FT"
 	},
 	"version" : 
 	{
