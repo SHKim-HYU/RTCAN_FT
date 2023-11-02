@@ -71,7 +71,7 @@
 					"fragment" : " -std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls  "
 				},
 				{
-					"fragment" : "-D__XENO_COMPAT__ -D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__"
+					"fragment" : "-D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__"
 				},
 				{
 					"fragment" : "-std=c++17"
@@ -90,10 +90,6 @@
 				{
 					"backtrace" : 5,
 					"path" : "/usr/src/linux-headers-5.4.239-xenomai-3.2.3+"
-				},
-				{
-					"backtrace" : 6,
-					"path" : "/usr/xenomai/include/trank"
 				},
 				{
 					"backtrace" : 6,
@@ -149,7 +145,31 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-Wl,--no-as-needed -ltrank -Wl,@/usr/xenomai/lib/modechk.wrappers -lalchemy -lcopperplate /usr/xenomai/lib/xenomai/bootstrap.o -Wl,--wrap=main -Wl,--dynamic-list=/usr/xenomai/lib/dynlist.ld -L/usr/xenomai/lib -lcobalt -lmodechk -lpthread -lrt",
+				"fragment" : "-Wl,--no-as-needed -Wl,@/usr/xenomai/lib/modechk.wrappers -lalchemy -lcopperplate /usr/xenomai/lib/xenomai/bootstrap.o -Wl,--wrap=main -Wl,--dynamic-list=/usr/xenomai/lib/dynlist.ld -L/usr/xenomai/lib -lcobalt -lmodechk -lpthread -lrt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lalchemy",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcopperplate",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcobalt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lmodechk",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lrt",
 				"role" : "libraries"
 			}
 		],

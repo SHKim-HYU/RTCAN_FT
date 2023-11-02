@@ -7,9 +7,10 @@
 #include <signal.h>
 #include <unistd.h>
 #include <sys/mman.h>
-#include <rtdk.h>
-#include <native/task.h>
-#include <native/timer.h>
+// #include <rtdk.h>
+#include <alchemy/task.h>
+#include <alchemy/timer.h>
+#include <alchemy/mutex.h>
 
 #include <PCANDevice.h>
 
@@ -129,7 +130,7 @@ int main(int argc, char *argv[])
     can.AddFilter(1, 2); // Only Listen to messages on id 0x01, 0x02.  
 
     // Perform auto-init of rt_print buffers if the task doesn't do so
-    rt_print_auto_init(1);
+    rt_print_init(0, NULL);
 
     signal(SIGINT, signal_handler);
     signal(SIGTERM, signal_handler);

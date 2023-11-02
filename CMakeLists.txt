@@ -140,7 +140,7 @@ target_link_libraries(${PROJECT_NAME}
 message(STATUS "pcan library: ${PCAN_LIBRARY}")
 message(STATUS "pcan include: ${PCAN_INCLUDE_DIR}")
 # xenomai
-find_package(Xenomai 3.1.1 REQUIRED NATIVE)
+find_package(Xenomai 3.1.1 REQUIRED ALCHEMY)
 message(STATUS "Xenomai found with theses skins: ${Xenomai_SKINS}")
 if(Xenomai_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${KERNELHEADERS_DIR})
@@ -154,7 +154,7 @@ if(Xenomai_FOUND)
 
         target_include_directories(${PROJECT_NAME} PUBLIC ${Xenomai_${comp_lists}_INCLUDE_DIRS})
         # target_link_libraries(${PROJECT_NAME} PUBLIC ${Xenomai_${comp_lists}_LIBRARY_DIRS} ${Xenomai_${comp_lists}_LIBRARIES})
-        target_link_libraries(${PROJECT_NAME} ${Xenomai_${comp_lists}_DL_FLAGS})
+        target_link_libraries(${PROJECT_NAME} ${Xenomai_${comp_lists}_DL_FLAGS} ${Xenomai_${comp_lists}_LIBRARIES})
         set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${Xenomai_${comp_lists}_DEFINITIONS})
     endforeach(comp_lists ${Xenomai_SKINS})
 endif(Xenomai_FOUND)
