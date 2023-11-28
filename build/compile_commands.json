@@ -1,22 +1,22 @@
 [
 {
   "directory": "/home/robot/robot_ws/RTCAN_FT/build",
-  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/home/robot/robot_ws/RTCAN_FT/include/CAN -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/usr/xenomai/include/cobalt -I/usr/xenomai/include -I/usr/xenomai/include/alchemy   -std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls   -D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__ -std=c++17 -o CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o -c /home/robot/robot_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp",
+  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/home/robot/robot_ws/RTCAN_FT/include/CAN -I/usr/xenomai/include/cobalt -I/usr/xenomai/include -I/usr/xenomai/include/alchemy   -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG   -D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__ -std=c++17 -o CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o -c /home/robot/robot_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp",
   "file": "/home/robot/robot_ws/RTCAN_FT/src/RTCAN_FT_Client.cpp"
 },
 {
   "directory": "/home/robot/robot_ws/RTCAN_FT/build/include/CAN",
-  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/home/robot/robot_ws/RTCAN_FT/include/CAN   -std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls   -std=c++17 -o CMakeFiles/CAN.dir/CANDevice.cpp.o -c /home/robot/robot_ws/RTCAN_FT/include/CAN/CANDevice.cpp",
+  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/home/robot/robot_ws/RTCAN_FT/include/CAN   -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG   -std=c++17 -o CMakeFiles/CAN.dir/CANDevice.cpp.o -c /home/robot/robot_ws/RTCAN_FT/include/CAN/CANDevice.cpp",
   "file": "/home/robot/robot_ws/RTCAN_FT/include/CAN/CANDevice.cpp"
 },
 {
   "directory": "/home/robot/robot_ws/RTCAN_FT/build/include/CAN",
-  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/home/robot/robot_ws/RTCAN_FT/include/CAN   -std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls   -std=c++17 -o CMakeFiles/CAN.dir/ElmoCiA402.cpp.o -c /home/robot/robot_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp",
+  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/home/robot/robot_ws/RTCAN_FT/include/CAN   -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG   -std=c++17 -o CMakeFiles/CAN.dir/ElmoCiA402.cpp.o -c /home/robot/robot_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp",
   "file": "/home/robot/robot_ws/RTCAN_FT/include/CAN/ElmoCiA402.cpp"
 },
 {
   "directory": "/home/robot/robot_ws/RTCAN_FT/build/include/CAN",
-  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/home/robot/robot_ws/RTCAN_FT/include/CAN   -std=c++17 -Wall -Wextra -fPIC -g -fno-omit-frame-pointer -fno-inline-functions -fno-inline-functions-called-once -fno-optimize-sibling-calls   -std=c++17 -o CMakeFiles/CAN.dir/PCANDevice.cpp.o -c /home/robot/robot_ws/RTCAN_FT/include/CAN/PCANDevice.cpp",
+  "command": "/usr/bin/g++   -I/home/robot/robot_ws/RTCAN_FT/bin/inc -I/usr/src/linux-headers-5.4.239-xenomai-3.2.3+ -I/home/robot/robot_ws/RTCAN_FT/include/CAN   -std=c++17 -Wall -Wextra -fPIC -O2 -DNDEBUG   -std=c++17 -o CMakeFiles/CAN.dir/PCANDevice.cpp.o -c /home/robot/robot_ws/RTCAN_FT/include/CAN/PCANDevice.cpp",
   "file": "/home/robot/robot_ws/RTCAN_FT/include/CAN/PCANDevice.cpp"
 }
 ]

@@ -2,8 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CAN.dir/CANDevice.cpp.o"
   "CMakeFiles/CAN.dir/ElmoCiA402.cpp.o"
   "CMakeFiles/CAN.dir/PCANDevice.cpp.o"
-  "libCANd.a"
-  "libCANd.pdb"
+  "libCAN.a"
+  "libCAN.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

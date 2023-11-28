@@ -67,7 +67,7 @@ void read_thread(void *arg)
         if (res1 == 1 && res2 == 1)
         {
             //CANbus data to Torque data
-            for(int i = 0; i<6; i++)
+            for(int i = 0; i<8; i++)
             {
                 data_field[i] = (unsigned char) RxFrame1.data[i];
                 data_field[i+8] = (unsigned char) RxFrame2.data[i];

@@ -79,7 +79,7 @@ RTCAN_FT_EXTERNAL_OBJECTS =
 
 RTCAN_FT: CMakeFiles/RTCAN_FT.dir/src/RTCAN_FT_Client.cpp.o
 RTCAN_FT: CMakeFiles/RTCAN_FT.dir/build.make
-RTCAN_FT: include/CAN/libCANd.a
+RTCAN_FT: include/CAN/libCAN.a
 RTCAN_FT: /usr/lib/libpcanfd.so
 RTCAN_FT: CMakeFiles/RTCAN_FT.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/robot/robot_ws/RTCAN_FT/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable RTCAN_FT"

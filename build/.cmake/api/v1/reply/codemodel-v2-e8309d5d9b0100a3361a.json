@@ -36,7 +36,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -72,14 +72,14 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "CAN::@b812fb93f64d8e23a576",
-					"jsonFile" : "target-CAN-Debug-889c19745a68e55a047e.json",
+					"jsonFile" : "target-CAN-Release-217f4a4f91e99acf9497.json",
 					"name" : "CAN",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "RTCAN_FT::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RTCAN_FT-Debug-ce0a8803609135e4bc8c.json",
+					"jsonFile" : "target-RTCAN_FT-Release-651b57d1adfe7ece7da4.json",
 					"name" : "RTCAN_FT",
 					"projectIndex" : 0
 				}
